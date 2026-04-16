@@ -8,7 +8,7 @@ const url = process.env.MONGODB_URI
 console.log('connecting to', url)
 
 mongoose.connect(url)
-  .then(result => {
+  .then(() => { // <--- Changed to empty parentheses ()
     console.log('connected to MongoDB')
   })
   .catch(error => {
@@ -16,8 +16,16 @@ mongoose.connect(url)
   })
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: String,
+  name: {
+    type: String,
+    minLength: 3,
+    required: true
+  },
+  number: {
+    type: String,
+    minLength: 8,
+    required: true
+  }
 })
 
 // This cleans up the data format for the frontend (replaces _id with id)

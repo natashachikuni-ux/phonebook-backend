@@ -7,7 +7,7 @@ if (process.argv.length < 3) {
 
 
 // Replace the whole url line with this (using %40 for the @)
-const url = `mongodb+srv://natashachikuni_db_user:Tashkunnie%407777@cluster0.8ayjrij.mongodb.net/phonebookApp?retryWrites=true&w=majority`
+const url = 'mongodb+srv://natashachikuni_db_user:Tashkunnie%407777@cluster0.8ayjrij.mongodb.net/phonebookApp?retryWrites=true&w=majority'
 mongoose.connect(url)
 
 const personSchema = new mongoose.Schema({
@@ -36,7 +36,7 @@ if (process.argv.length > 3) {
     number: number,
   })
 
-  person.save().then(result => {
+  person.save().then(() => {
     console.log(`added ${name} number ${number} to phonebook`)
     mongoose.connection.close()
   })
