@@ -2,7 +2,8 @@ GET http://localhost:3001/api/persons
 
 ###
 POST http://localhost:3001/api/persons
-Content-Type:application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hdGFzaGFfYyIsImlkIjoiNjllMGY5ODVmYTg1MjBiZDg3YWJkYTFjIiwiaWF0IjoxNzc2NDE2ODY1LCJleHAiOjE3NzY0MjA0NjV9.JucBd127pnBxsMRYoT5tjKg6dKlvB6ldYb3IBdB_SFY
 
 {
     "name": "Natasha Chikuni",
@@ -11,3 +12,34 @@ Content-Type:application/json
 
 ###
 DELETE http://localhost:3001/api/persons/1
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "natasha_c",
+  "name": "Natasha Chikuni",
+  "password": "mypassword123"
+}
+
+###
+GET http://localhost:3001/api/users
+### Test short password (should fail)
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "tester",
+  "name": "Test User",
+  "password": "12"
+}
+
+### Login with the user we created yesterday
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "natasha_c",
+  "password": "mypassword123"
+}

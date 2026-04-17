@@ -3,13 +3,18 @@ const mongoose = require('mongoose')
 const personSchema = new mongoose.Schema({
   name: {
     type: String,
-    minLength: 3,
+    minlength: 3,
     required: true
   },
   number: {
     type: String,
-    minLength: 8,
+    minlength: 8,
     required: true
+  },
+  // This is the link we just added
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 
